@@ -5,7 +5,7 @@ class Matrice
 {
 	int n;
 	int m;
-	int **matrice;
+	float **matrice;
 
 public:
 	Matrice(int a, int b)
@@ -13,10 +13,10 @@ public:
 		n = a; // righe
 		m = b; // colonne
 		cout << n << m << endl;
-		matrice = new int *[n];
+		matrice = new float *[n];
 		for (int i = 0; i < m; i++)
 		{
-			matrice[i] = new int[m];
+			matrice[i] = new float[m];
 		}
 		for (int i = 0; i < n; i++)
 		{
@@ -27,4 +27,7 @@ public:
 		};
 	}
 	void stampa();
+	void assegna(float *vett, int size);
+	float *mPerVettore(float *vett, int size);
+	float *mVettoreRiga(float *vett, int size);
 };
