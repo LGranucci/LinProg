@@ -28,6 +28,6 @@ public:
 	}
 	void stampa();
 	void assegna(float *vett, int size);
-	float *mPerVettore(float *vett, int size);
-	float *mVettoreRiga(float *vett, int size);
+	float *operator*(float *vett);
+	float *mRiga(float *vett);
 };

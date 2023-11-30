@@ -11,11 +11,15 @@ int main()
 
 	a.stampa();
 	float vect[2] = {3, 4};
-	float *res = a.mPerVettore(vect, 2);
+	float *res = a * vect;
 	for (int i = 0; i < 2; i++)
 	{
 		cout << res[i] << " ";
 	}
-
+	res = a.mRiga(vect);
+	for (int i = 0; i < 2; i++)
+	{
+		cout << res[i] << " ";
+	}
 	return 0;
 };
