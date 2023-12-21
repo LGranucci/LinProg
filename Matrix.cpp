@@ -14,6 +14,7 @@ void Matrice::stampa()
 };
 void Matrice::assegna(float *vett, int size)
 {
+	cout << size << endl;
 	if (size != n * m)
 	{
 		cout << "size vettore sbagliato" << endl;
@@ -28,10 +29,9 @@ void Matrice::assegna(float *vett, int size)
 	}
 }
 
-float *Matrice::operator*(float *vettore)
+float *Matrice::mColonna(float *vettore, int size)
 {
-	int size = sizeof(vettore) / sizeof(vettore[0]);
-	if (size != n)
+	if (size != m)
 	{
 		cout << "non possibile" << endl;
 		return vettore;
@@ -50,10 +50,10 @@ float *Matrice::operator*(float *vettore)
 	return result;
 }
 
-float *Matrice::mRiga(float *vett)
+float *Matrice::mRiga(float *vett, int size)
 {
-	int size = sizeof(vett) / sizeof(vett[0]);
-	if (size != m)
+
+	if (size != n)
 	{
 		cout << "not possible" << endl;
 		return vett;
@@ -70,4 +70,17 @@ float *Matrice::mRiga(float *vett)
 		aux = 0;
 	}
 	return result;
+}
+
+Matrice *Matrice::operator=(Matrice &matr)
+{
+	Matrice *b = new Matrice(n, m);
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; i++)
+		{
+			b->matrice[i][j] = matrice[i][j];
+		}
+	}
+	return b;
 }
