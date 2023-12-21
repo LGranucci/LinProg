@@ -1,2 +1,1 @@
-make: 
-	g++ -o Origine.exe Matrix.cpp Origine.cpp Matrix.h
+This repo emulates the behaviour of the *LinProg* function in Mathlab. Built in Cpp without using the vector type.
