@@ -71,3 +71,4 @@ float *Matrice::mRiga(float *vett)
 	}
 	return result;
 }
+
