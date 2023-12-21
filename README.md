@@ -1,2 +1,1 @@
-# LinProg
-Simple C++ repo that emulates what the *linProg* function from MathLab does. built without using the vector type.
+This repo emulates the behaviour of the *LinProg* function in Mathlab. Built in Cpp without using the vector type.
