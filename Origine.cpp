@@ -5,9 +5,9 @@ using namespace std;
 
 int main()
 {
-	Matrice a(3, 3);
-	float v[9] = {2, 1, 0, 2, 4, 3, 5, 2, 9};
-	a.assegna(v, 9);
+	Matrice a(3, 2);
+	float v[6] = {2, 1, 0, 2, 4, 3};
+	a.assegna(v, 6);
 
 	a.stampa();
 	float vect[3] = {3, 4, 3};
