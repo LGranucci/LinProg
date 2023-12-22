@@ -48,4 +48,6 @@ public:
 	float *mColonna(float *vett, int size);
 	float *mRiga(float *vett, int size);
 	Matrice *operator=(Matrice &matr);
+    float *operator*(const Matrice &mat);
+
 };
