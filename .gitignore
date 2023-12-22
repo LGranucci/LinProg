@@ -1,2 +1,5 @@
+a.out
+test*
 *.exe
 .*.swp
+*.gch

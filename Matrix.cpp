@@ -84,3 +84,36 @@ Matrice *Matrice::operator=(Matrice &matr)
 	}
 	return b;
 }
+
+
+//FIXME
+float *Matrice::operator*(const Matrice &mat)
+{
+    if (this->n != mat.m)
+    {
+        cout<<"Errore: dimensione scorretta\n";
+        return nullptr;
+    }
+
+    float* res = new float[this->m * mat.n];
+
+    for(int i = 0; i < this->m * mat.n; i++) 
+    {
+        res[i] = 0;
+    }
+    
+    for (int k = 0; k < this->m; k++) 
+    {
+         for (int i = 0; i < mat.n; i++) 
+         {
+             for (int j = 0; j < this->n; j++)
+             {
+                 res[k * mat.n + i] += 
+                    this->matrice[k][j] * mat.matrice[j][i];
+             }
+         }
+    }
+    return res;
+}
+
+
