@@ -3,8 +3,8 @@ using namespace std;
 
 class Matrice
 {
-	int n;
-	int m;
+	int n; //righe
+	int m; //colonne
 	float **matrice;
 	float **trasposed;
 
@@ -12,8 +12,8 @@ public:
 	Matrice(int a, int b)
 	{
 
-		m = a; // righe
-		n = b; // colonne
+		n = a; // righe
+		m = b; // colonne
 		cout << n << m << endl;
 		matrice = new float *[n];
 
@@ -28,6 +28,7 @@ public:
 				matrice[i][j] = 0;
 			};
 		};
+
 		if (n == m)
 		{
 			trasposed = new float *[n];
@@ -51,3 +52,4 @@ public:
 	Matrice *operator=(Matrice &matr);
 	float *operator*(const Matrice &mat);
 };
+

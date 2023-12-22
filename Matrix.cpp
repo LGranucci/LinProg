@@ -24,7 +24,7 @@ void Matrice::assegna(float *vett, int size)
 	{
 		for (int j = 0; j < m; j++)
 		{
-			matrice[i][j] = vett[i * n + j];
+			matrice[i][j] = vett[i * m + j];
 		}
 	}
 }
@@ -84,8 +84,6 @@ Matrice *Matrice::operator=(Matrice &matr)
 	}
 	return b;
 }
-
-// FIXME
 float *Matrice::operator*(const Matrice &mat)
 {
 	if (this->n != mat.m)
