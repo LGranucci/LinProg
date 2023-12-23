@@ -1,6 +1,7 @@
 #include "Matrix.h"
 #include <iostream>
 using namespace std;
+
 void Matrice::stampa()
 {
 	for (int i = 0; i < n; i++)
@@ -12,6 +13,7 @@ void Matrice::stampa()
 		cout << endl;
 	}
 };
+
 void Matrice::assegna(float *vett, int size)
 {
 	cout << size << endl;
@@ -52,7 +54,6 @@ float *Matrice::mColonna(float *vettore, int size)
 
 float *Matrice::mRiga(float *vett, int size)
 {
-
 	if (size != n)
 	{
 		cout << "not possible" << endl;
@@ -84,6 +85,7 @@ Matrice *Matrice::operator=(Matrice &matr)
 	}
 	return b;
 }
+
 float *Matrice::operator*(const Matrice &mat)
 {
 	if (this->n != mat.m)
@@ -99,11 +101,11 @@ float *Matrice::operator*(const Matrice &mat)
 		res[i] = 0;
 	}
 
-	for (int k = 0; k < this->m; k++)
+	for (int k = 0; k < this->n; k++)
 	{
-		for (int i = 0; i < mat.n; i++)
+		for (int i = 0; i < mat.m; i++)
 		{
-			for (int j = 0; j < this->n; j++)
+			for (int j = 0; j < this->m; j++)
 			{
 				res[k * mat.n + i] +=
 					this->matrice[k][j] * mat.matrice[j][i];
