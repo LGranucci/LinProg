@@ -45,6 +45,14 @@ public:
 			};
 		}
 	}
+    ~Matrice()
+    {
+        for (int i = 0; i < n; i++)
+        {
+            delete[] matrice[i];
+        }
+        delete[] matrice;
+    }
 	void stampa();
 	void assegna(float *vett, int size);
 	float *mColonna(float *vett, int size);
