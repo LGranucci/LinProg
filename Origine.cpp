@@ -18,7 +18,7 @@ int main()
 	}
 	cout << endl;
 	float *res2 = a.mRiga(vect, 3);
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		cout << res2[i] << " ";
 	}

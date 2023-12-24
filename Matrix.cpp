@@ -61,9 +61,9 @@ float *Matrice::mRiga(float *vett, int size)
 	}
 	float *result = new float[n];
 	float aux = 0;
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < m; i++)
 	{
-		for (int j = 0; j < m; j++)
+		for (int j = 0; j < n; j++)
 		{
 			aux += matrice[j][i] * vett[j];
 		}
@@ -114,3 +114,4 @@ float *Matrice::operator*(const Matrice &mat)
 	}
 	return res;
 }
+
