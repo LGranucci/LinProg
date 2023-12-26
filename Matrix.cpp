@@ -38,7 +38,7 @@ float *Matrice::mColonna(float *vettore, int size)
 		cout << "non possibile" << endl;
 		return vettore;
 	}
-	float *result = new float[m];
+	float *result = new float[n];
 	float aux = 0;
 	for (int i = 0; i < n; i++)
 	{
