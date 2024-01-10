@@ -44,5 +44,18 @@ int main()
 	}
 	cout << endl;
 
+    //test overloading operator * 
+    cout<<"\n\ntest prodotto a*b:\n";
+    float *moltiplication = a * b; //matrice 3*3
+    
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            cout<<" "<<moltiplication[i*3 + j];
+        }
+        cout<<"\n";
+    }
+
 	return 0;
 };
