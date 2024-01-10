@@ -88,15 +88,15 @@ Matrice *Matrice::operator=(Matrice &matr)
 
 float *Matrice::operator*(const Matrice &mat)
 {
-	if (this->n != mat.m)
+	if (this->m != mat.n)
 	{
 		cout << "Errore: dimensione scorretta\n";
 		return nullptr;
 	}
 
-	float *res = new float[this->m * mat.n];
+	float *res = new float[this->n * mat.m];
 
-	for (int i = 0; i < this->m * mat.n; i++)
+	for (int i = 0; i < this->n * mat.m; i++)
 	{
 		res[i] = 0;
 	}
@@ -107,7 +107,7 @@ float *Matrice::operator*(const Matrice &mat)
 		{
 			for (int j = 0; j < this->m; j++)
 			{
-				res[k * mat.n + i] +=
+				res[k * mat.m + i] +=
 					this->matrice[k][j] * mat.matrice[j][i];
 			}
 		}
