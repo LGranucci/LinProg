@@ -10,13 +10,15 @@ int main()
     Matrice b(2, 7);
     Matrice c(3, 3);
     Matrice d(2, 2);
+    Matrice e(4, 4);
 	float v1[6] = {1, 2, 3, 4, 5, 6};
-    float v2[14] = {1, 2, 3, 4, 5, 6, 7, 8, 10, 10, 11, 12, 13, 14};
+    float v2[16] = {1, 2, 3, 4, 5, 6, 7, 8, 10, 10, 11, 12, 13, 14, 15, 16};
 	float vect[3] = {3, 4, 3};
 	a.assegna(v1, 6);
     b.assegna(v2, 14);
     c.assegna(v2, 9);
     d.assegna(v1, 4);
+    e.assegna(v2, 16);
 
     cout<<"Matrice a: \n";
 	a.stampa();
@@ -69,5 +71,8 @@ int main()
     c.stampa();
     std::cout<<"\ndeterminante pari a: "<<c.determinante()<<"\n";
 
+    std::cout<<"prova determinante di matrice e: \n";
+    e.stampa();
+    std::cout<<"\ndeterminante pari a: "<<e.determinante()<<"\n";
 	return 0;
 };

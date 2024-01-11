@@ -219,7 +219,7 @@ float *Matrice::operator*(const Matrice &mat)
 	return res;
 }
 
-int Matrice::determinante()
+float Matrice::determinante()
 {
     if (n != m) 
     {
@@ -235,9 +235,9 @@ int Matrice::determinante()
     return det(tempv, n);
 }
 
-int det(float matrix[], int dim)
+float det(float matrix[], int dim)
 {
-    int d = 0;
+    float d = 0;
     if(dim == 1)
         return matrix[0];
     if(dim == 2)

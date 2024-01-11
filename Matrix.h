@@ -28,8 +28,8 @@ public:
 	float *mRiga(float *vett, int size);
 	Matrice *operator=(Matrice &matr);
 	float *operator*(const Matrice &mat);
-    int determinante();
+    float determinante();
 };
 
-int det(float[], int);
+float det(float[], int);
 
