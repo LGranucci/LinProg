@@ -1,6 +1,58 @@
-#include "Matrix.h"
 #include <iostream>
+#include "Matrix.h"
 using namespace std;
+
+Matrice::Matrice(int a, int b)
+{
+
+		n = a; // righe
+		m = b; // colonne
+		cout << n << m << endl;
+		matrice = new float *[n];
+
+		for (int i = 0; i < n; i++)
+		{
+			matrice[i] = new float[m];
+		}
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < m; j++)
+			{
+				matrice[i][j] = 0;
+			};
+		};
+
+		if (n == m)
+		{
+			trasposed = new float *[n];
+			for (int i = 0; i < m; i++)
+			{
+				trasposed[i] = new float[m];
+			}
+			for (int i = 0; i < n; i++)
+			{
+				for (int j = 0; j < m; j++)
+				{
+					matrice[j][i] = 0;
+				};
+			};
+		}
+}
+
+Matrice::Matrice(const Matrice &m1) //DA TESTARE
+{
+    this->n = m1.n;
+    this->m = m1.m;
+    this->matrice = new float*[m1.n];
+    for (int i = 0; i < m1.n; i++)
+    {
+        this->matrice[i] = new float[m1.m];
+        for (int j = 0; j < m1.m; j++)
+        {
+            this->matrice[i][j] = m1.matrice[i][j];
+        }
+    }
+}
 
 void Matrice::stampa()
 {
