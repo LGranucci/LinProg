@@ -1,12 +1,14 @@
 #include <iostream>
 using namespace std;
 
+
 class Matrice
 {
 	int n; //righe
 	int m; //colonne
 	float **matrice;
 	float **trasposed;
+    
 
 public:
 	Matrice(int, int);
@@ -26,6 +28,8 @@ public:
 	float *mRiga(float *vett, int size);
 	Matrice *operator=(Matrice &matr);
 	float *operator*(const Matrice &mat);
+    int determinante();
 };
 
+int det(float[], int);
 

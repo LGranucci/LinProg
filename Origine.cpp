@@ -8,11 +8,15 @@ int main()
     //Test mColonna
 	Matrice a(3, 2);
     Matrice b(2, 7);
+    Matrice c(3, 3);
+    Matrice d(2, 2);
 	float v1[6] = {1, 2, 3, 4, 5, 6};
-    float v2[14] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+    float v2[14] = {1, 2, 3, 4, 5, 6, 7, 8, 10, 10, 11, 12, 13, 14};
 	float vect[3] = {3, 4, 3};
 	a.assegna(v1, 6);
     b.assegna(v2, 14);
+    c.assegna(v2, 9);
+    d.assegna(v1, 4);
 
     cout<<"Matrice a: \n";
 	a.stampa();
@@ -57,6 +61,13 @@ int main()
         }
         cout<<"\n";
     }
+    std::cout<<"prova determinante di matrice d: \n";
+    d.stampa();
+    std::cout<<"\ndeterminante pari a: "<<d.determinante()<<"\n";
+
+    std::cout<<"prova determinante di matrice c: \n";
+    c.stampa();
+    std::cout<<"\ndeterminante pari a: "<<c.determinante()<<"\n";
 
 	return 0;
 };

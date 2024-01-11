@@ -1,6 +1,41 @@
 #include <iostream>
 #include "Matrix.h"
+#define MAX 200
+
 using namespace std;
+
+int alt(int num)
+{
+    if (num%2 == 0)
+    {
+        return 1;
+    }
+    else return -1;
+}
+
+//dim: dimensione di src 
+void copiaEscludi(float* src, float* dest, int r, int c, int dim)
+{
+    int iSrc = 0, jSrc = 0;
+    for (int i = 0; i < dim-1; i++)
+    {
+        if(iSrc == r)
+        {
+            iSrc++;
+        }
+        for(int j = 0; j < dim-1; j++)
+        {
+            if(jSrc == c)
+            {
+                jSrc++;
+            }
+            dest[i*(dim-1)+j] = src[iSrc * dim + jSrc];
+            jSrc++;
+        }
+        jSrc = 0;
+        iSrc++;
+    }
+}
 
 Matrice::Matrice(int a, int b)
 {
@@ -182,5 +217,41 @@ float *Matrice::operator*(const Matrice &mat)
 		}
 	}
 	return res;
+}
+
+int Matrice::determinante()
+{
+    if (n != m) 
+    {
+        return 0;
+    }
+    float tempv[n*n];
+
+    for(int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+            tempv[i*n + j] = matrice[i][j];
+    }
+    return det(tempv, n);
+}
+
+int det(float matrix[], int dim)
+{
+    int d = 0;
+    if(dim == 1)
+        return matrix[0];
+    if(dim == 2)
+        return matrix[0]*matrix[3]-matrix[1]*matrix[2];
+    else
+    {
+        for(int i = 0; i < dim; i++)
+        {
+            float sotto_m[(dim-1)*(dim-1)];
+            copiaEscludi(matrix, sotto_m, 0, i, dim);
+            d += alt(i) * matrix[i]
+                 * det(sotto_m, dim-1);
+        }
+    }
+    return d;
 }
 
