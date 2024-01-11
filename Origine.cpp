@@ -7,11 +7,12 @@ int main()
 {
     //Test mColonna
 	Matrice a(3, 2);
-    Matrice b(2, 3);
-	float v1[6] = {2, 1, 0, 2, 4, 3};
+    Matrice b(2, 7);
+	float v1[6] = {1, 2, 3, 4, 5, 6};
+    float v2[14] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 	float vect[3] = {3, 4, 3};
 	a.assegna(v1, 6);
-    b.assegna(v1, 6);
+    b.assegna(v2, 14);
 
     cout<<"Matrice a: \n";
 	a.stampa();
@@ -50,9 +51,9 @@ int main()
     
     for (int i = 0; i < 3; i++)
     {
-        for (int j = 0; j < 3; j++)
+        for (int j = 0; j < 7; j++)
         {
-            cout<<" "<<moltiplication[i*3 + j];
+            cout<<" "<<moltiplication[i*7 + j];
         }
         cout<<"\n";
     }
