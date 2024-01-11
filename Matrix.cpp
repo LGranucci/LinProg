@@ -52,6 +52,23 @@ Matrice::Matrice(const Matrice &m1) //DA TESTARE
             this->matrice[i][j] = m1.matrice[i][j];
         }
     }
+    this->trasposed = new float*[m1.m];
+    for (int i = 0; i < m; i++)
+    {
+        this->trasposed[i] = new float[m1.n];
+    }
+    this->aggiornaTrasposta();
+}
+
+void Matrice::aggiornaTrasposta() //DA TESTARE
+{
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            trasposed[i][j] = matrice[j][i];
+        }
+    }
 }
 
 void Matrice::stampa()

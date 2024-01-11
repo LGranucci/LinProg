@@ -19,6 +19,7 @@ public:
         delete[] matrice;
     }
     Matrice(const Matrice&);
+    void aggiornaTrasposta();
 	void stampa();
 	void assegna(float *vett, int size);
 	float *mColonna(float *vett, int size);
