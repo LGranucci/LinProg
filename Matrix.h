@@ -23,12 +23,13 @@ public:
     Matrice(const Matrice&);
     void aggiornaTrasposta();
 	void stampa();
-	void assegna(float *vett, int size);
+	void assegna(float *vett, int size, bool din);
 	float *mColonna(float *vett, int size);
 	float *mRiga(float *vett, int size);
 	Matrice *operator=(Matrice &matr);
 	float *operator*(const Matrice &mat);
     float determinante();
+    float *inversa();
 };
 
 float det(float[], int);

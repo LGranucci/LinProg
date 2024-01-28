@@ -118,7 +118,7 @@ void Matrice::stampa()
 	}
 };
 
-void Matrice::assegna(float *vett, int size)
+void Matrice::assegna(float *vett, int size, bool din)
 {
 	cout << size << endl;
 	if (size != n * m)
@@ -133,6 +133,8 @@ void Matrice::assegna(float *vett, int size)
 			matrice[i][j] = vett[i * m + j];
 		}
 	}
+    if (din)
+        delete[] vett;
 }
 
 float *Matrice::mColonna(float *vettore, int size)
@@ -254,4 +256,11 @@ float det(float matrix[], int dim)
     }
     return d;
 }
+
+
+
+
+
+
+
 

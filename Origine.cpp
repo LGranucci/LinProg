@@ -14,11 +14,11 @@ int main()
 	float v1[6] = {1, 2, 3, 4, 5, 6};
     float v2[16] = {1, 2, 3, 4, 5, 6, 7, 8, 10, 10, 11, 12, 13, 14, 15, 16};
 	float vect[3] = {3, 4, 3};
-	a.assegna(v1, 6);
-    b.assegna(v2, 14);
-    c.assegna(v2, 9);
-    d.assegna(v1, 4);
-    e.assegna(v2, 16);
+	a.assegna(v1, 6, false);
+    b.assegna(v2, 14, false);
+    c.assegna(v2, 9, false);
+    d.assegna(v1, 4, false);
+    e.assegna(v2, 16, false);
 
     cout<<"Matrice a: \n";
 	a.stampa();
