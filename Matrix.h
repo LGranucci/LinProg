@@ -23,7 +23,7 @@ public:
     Matrice(const Matrice&);
     void aggiornaTrasposta();
 	void stampa();
-	void assegna(float *vett, int size, bool din);
+	void assegna(float *vett, int size, bool din = false);
 	float *mColonna(float *vett, int size);
 	float *mRiga(float *vett, int size);
 	Matrice *operator=(Matrice &matr);

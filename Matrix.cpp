@@ -10,7 +10,7 @@ int alt(int num)
     {
         return 1;
     }
-    else return -1;
+    return -1;
 }
 
 //dim: dimensione di src 
@@ -42,7 +42,7 @@ Matrice::Matrice(int a, int b)
 
 		n = a; // righe
 		m = b; // colonne
-		cout << n << m << endl;
+		//cout << n << m << endl;
 		matrice = new float *[n];
 
 		for (int i = 0; i < n; i++)
@@ -120,7 +120,7 @@ void Matrice::stampa()
 
 void Matrice::assegna(float *vett, int size, bool din)
 {
-	cout << size << endl;
+	//cout << size << endl;
 	if (size != n * m)
 	{
 		cout << "size vettore sbagliato" << endl;
@@ -258,6 +258,58 @@ float det(float matrix[], int dim)
 }
 
 
+float *Matrice::inversa() 
+{
+
+    float detM = this->determinante();
+    
+    std::cout<<"determinante matrice da invertire: "<<detM<<"\n";
+
+    if (!detM) 
+    {
+        std::cout<<"matrice non invertibile\n";
+        return nullptr;
+    }
+
+    float *ris = new float[n*n];
+
+    float matrix[n*n];
+
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            matrix[i * n + j] = this->matrice[i][j];
+        }
+    }
+
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            float coFactor[(n-1)*(n-1)]; 
+            copiaEscludi(matrix, coFactor, i, j, n);
+            //// DEBUGGG 
+            //std::cout<<"cofattore di A_"<<i<<"_"<<j<<": \n";
+            //for(int k = 0; k < n-1; k++)
+            //{
+            //    for(int l = 0; l < n-1; l++)
+            //    {
+            //        std::cout<<coFactor[i * (n-1) + j];
+            //    }
+            //    std::cout<<"\n";
+            //}
+            //std::cout<<"determinante del cofattore: "<<det(coFactor, n-1)<<"\n";
+            ////DEBUGGgggGG
+            ris[j*n + i] = alt(i+j) * det(coFactor, n-1);
+        }
+    }
+    for (int i = 0; i < n*n; i++)
+    {
+        ris[i] *= (1/detM);
+    }
+    return ris;
+}
 
 
 
