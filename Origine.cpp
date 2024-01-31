@@ -12,13 +12,13 @@ int main()
     Matrice d(2, 2);
     Matrice e(4, 4);
 	float v1[6] = {1, 2, 3, 4, 5, 6};
-    float v2[16] = {1, 2, 3, 4, 5, 6, 7, 8, 10, 10, 11, 12, 13, 14, 15, 16};
+    float v2[16] = {0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17};
 	float vect[3] = {3, 4, 3};
-	a.assegna(v1, 6, false);
-    b.assegna(v2, 14, false);
-    c.assegna(v2, 9, false);
-    d.assegna(v1, 4, false);
-    e.assegna(v2, 16, false);
+	a.assegna(v1, 6);
+    b.assegna(v2, 14);
+    c.assegna(v2, 9);
+    d.assegna(v1, 4);
+    e.assegna(v2, 16);
 
     cout<<"Matrice a: \n";
 	a.stampa();
@@ -74,5 +74,12 @@ int main()
     std::cout<<"prova determinante di matrice e: \n";
     e.stampa();
     std::cout<<"\ndeterminante pari a: "<<e.determinante()<<"\n";
+
+    //Test matrice inversa
+    std::cout<<"inversa matrice e: \n";
+    Matrice inv_e(4, 4);
+    inv_e.assegna(e.inversa(), 16, true);
+    
+    inv_e.stampa();
 	return 0;
 };
