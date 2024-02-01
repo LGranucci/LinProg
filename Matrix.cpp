@@ -121,6 +121,11 @@ void Matrice::stampa()
 void Matrice::assegna(float *vett, int size, bool din)
 {
 	//cout << size << endl;
+    if (vett == nullptr)
+    {
+        cout<<"vettore non esistente\n";
+        return;
+    }
 	if (size != n * m)
 	{
 		cout << "size vettore sbagliato" << endl;
@@ -263,7 +268,7 @@ float *Matrice::inversa()
 
     float detM = this->determinante();
     
-    std::cout<<"determinante matrice da invertire: "<<detM<<"\n";
+    //std::cout<<"determinante matrice da invertire: "<<detM<<"\n";
 
     if (!detM) 
     {
