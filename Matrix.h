@@ -1,3 +1,7 @@
+#ifndef MATRIX_HEADER
+#define MATRIX_HEADER
+
+
 #include <iostream>
 using namespace std;
 
@@ -34,3 +38,4 @@ public:
 
 float det(float[], int);
 
+#endif
