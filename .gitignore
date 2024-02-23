@@ -3,3 +3,5 @@ test*
 *.exe
 .*.swp
 *.gch
+.idea
+.vscode

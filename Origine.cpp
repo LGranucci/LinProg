@@ -79,7 +79,20 @@ int main()
     std::cout<<"inversa matrice e: \n";
     Matrice inv_e(4, 4);
     inv_e.assegna(e.inversa(), 16, true);
-    
     inv_e.stampa();
+
+    std::cout<<"martice e moltiplicata per la propria inversa: \n";
+
+    float* k = inv_e * e;
+    for (int i = 0; i < 4; i++)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            std::cout<<k[i*4+j]<<" ";
+        }
+        std::cout<<"\n";
+    }
+    delete[] k;
+    
 	return 0;
 };
