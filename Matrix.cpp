@@ -253,14 +253,14 @@ float Matrice::determinante()
     {
         return 0;
     }
-    float tempv[n*n];
+    float tempvs[n*n];
 
     for(int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
-            tempv[i*n + j] = matrice[i][j];
+            tempvs[i*n + j] = matrice[i][j];
     }
-    return det(tempv, n);
+    return det(tempvs, n);
 }
 
 float det(float matrix[], int dim)
