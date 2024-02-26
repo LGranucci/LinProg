@@ -95,6 +95,27 @@ Matrice::Matrice(const Matrice &m1) //DA TESTARE
     this->aggiornaTrasposta();
 }
 
+Matrice::Matrice(const Matrice& m1, int* base, int dim)//Da testare
+{
+    this->n = this->m = dim;
+    
+    this->matrice = new float*[dim];
+    for (int i = 0; i < dim; i++)
+    {
+        this->matrice[i] = new float[dim];
+        for(int j = 0; j < dim; j++)
+        {
+             this->matrice[i][j] = m1.matrice[base[i]][j];
+        }
+    }
+    this->trasposed = new float*[m1.m];
+    for (int i = 0; i < m; i++)
+    {
+        this->trasposed[i] = new float[m1.n];
+    }
+    this->aggiornaTrasposta();
+}
+
 void Matrice::aggiornaTrasposta() //DA TESTARE
 {
     for (int i = 0; i < m; i++)

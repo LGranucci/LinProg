@@ -25,6 +25,7 @@ public:
         delete[] matrice;
     }
     Matrice(const Matrice&);
+    Matrice(const Matrice&, int*, int); //Costruttore matrice di base
     void aggiornaTrasposta();
 	void stampa();
 	void assegna(float *vett, int size, bool din = false);
