@@ -91,7 +91,18 @@ int main()
             std::cout<<k[i*4+j]<<" ";
         }
         std::cout<<"\n";
+        cout<<endl;
     }
+
+    float* result;
+    inv_e.stampa();
+    result = inv_e.selezionaColonna(1);
+    for (int i = 0; i < 4; i++)
+    {
+        cout<<result[i]<<endl;
+    }
+    
+    
     delete[] k;
     
 	return 0;

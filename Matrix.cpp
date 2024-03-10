@@ -338,7 +338,32 @@ float *Matrice::inversa()
 }
 
 
+float* Matrice::selezionaRiga(int r){
+    float* res;
+    res = new float[this->m];
+    if(r >= n){
+        cout << "riga non esistente"<<endl;
+        return res;
+    }
+    for (int i = 0; i < this->m; i++)
+    {
+        res[i] = this->matrice[r][i];
+    }
+    
+    return res;
+}
 
-
-
-
+float* Matrice::selezionaColonna(int c){
+    float* res;
+    res = new float [this->n];
+    if(c >= m){
+        cout<< "colonna non esistente"<<endl;
+        return res;
+    }
+    for (int i = 0; i < this->n; i++)
+    {
+        res[i] = this->matrice[i][c];
+    }
+    
+    return res;
+}

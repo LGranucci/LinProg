@@ -35,6 +35,8 @@ public:
 	float *operator*(const Matrice &mat);
     float determinante();
     float *inversa();
+    float* selezionaRiga(int r);
+    float* selezionaColonna(int c);
 };
 
 float det(float[], int);
