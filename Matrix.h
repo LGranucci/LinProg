@@ -25,7 +25,7 @@ public:
         delete[] matrice;
     }
     Matrice(const Matrice&);
-    Matrice(const Matrice&, int*, int); //Costruttore matrice di base
+    Matrice(Matrice*, int*); //Costruttore matrice di base
     void aggiornaTrasposta();
 	void stampa();
 	void assegna(float *vett, int size, bool din = false);
@@ -41,4 +41,7 @@ public:
 
 float det(float[], int);
 
+int* PassoSimplesso(Matrice A, int n, int* Basi, float* c, float*b);
+float linprog(Matrice* A, int n, int m, int* Basi, float*c, float*b);
+ 
 #endif

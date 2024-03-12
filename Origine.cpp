@@ -94,15 +94,14 @@ int main()
         cout<<endl;
     }
 
-    float* result;
-    inv_e.stampa();
-    result = inv_e.selezionaColonna(1);
-    for (int i = 0; i < 4; i++)
-    {
-        cout<<result[i]<<endl;
-    }
-    
-    
+    int base[2] = {0, 2};
+    std::cout<<"matrice a"<<std::endl;
+    a.stampa();
+    Matrice* apun = &a;
+    float bvet[3] = {1, 2, 3};
+    float cvet[2] = {10, 15};
+
+    linprog(apun, 3, 2, base, cvet, bvet);
     delete[] k;
     
 	return 0;

@@ -2,6 +2,7 @@
 #include "Matrix.h"
 #define MAX 200
 
+
 using namespace std;
 
 int alt(int num)
@@ -95,23 +96,23 @@ Matrice::Matrice(const Matrice &m1) //DA TESTARE
     this->aggiornaTrasposta();
 }
 
-Matrice::Matrice(const Matrice& m1, int* base, int dim)//Da testare
+Matrice::Matrice(Matrice* m1, int* base)//Da testare
 {
-    this->n = this->m = dim;
+    this->m = this->n = m1->m;
     
-    this->matrice = new float*[dim];
-    for (int i = 0; i < dim; i++)
+    this->matrice = new float*[this->m];
+    for (int i = 0; i < this->n; i++)
     {
-        this->matrice[i] = new float[dim];
-        for(int j = 0; j < dim; j++)
+        this->matrice[i] = new float[this->m];
+        for(int j = 0; j < this->m; j++)
         {
-             this->matrice[i][j] = m1.matrice[base[i]][j];
+             this->matrice[i][j] = m1->matrice[base[i]][j];
         }
     }
-    this->trasposed = new float*[m1.m];
+    this->trasposed = new float*[m1->m];
     for (int i = 0; i < m; i++)
     {
-        this->trasposed[i] = new float[m1.n];
+        this->trasposed[i] = new float[m1->m];
     }
     this->aggiornaTrasposta();
 }
@@ -367,3 +368,43 @@ float* Matrice::selezionaColonna(int c){
     
     return res;
 }
+
+int* PassoSimplesso(Matrice A, int n, int* Basi, float* c, float*b){
+    
+    // y = c * A^-1 
+    float* ai_vect = A.inversa();
+    Matrice ai = Matrice(n, n);
+    ai.assegna(ai_vect, n * n, 0);
+    float* y = ai.mColonna(c, n);
+    //find k = first neg element of y
+    int k = -1;
+    for (int i = 0; i < n; i++)
+    {
+        std::cout<<y[i]<<"y"<<i<<std::endl;
+        if(y[i] < 0){
+            k = i;
+        }
+    }
+    if(k == -1){
+        std::cout<<"tutto y positivo";
+        Basi[0] = -1;
+        return Basi;
+    }
+    std::cout<<k;
+    return 0;
+}
+
+
+
+
+
+
+float linprog(Matrice* A, int n, int m, int* Basi, float*c, float*b){
+    Matrice Ab = Matrice(A, Basi);
+    PassoSimplesso(Ab, m, Basi, c, b);
+    return 0;   
+}
+
+
+
+
