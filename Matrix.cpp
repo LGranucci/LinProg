@@ -369,16 +369,18 @@ float* Matrice::selezionaColonna(int c){
     return res;
 }
 
-int* PassoSimplesso(Matrice A, int n, int* Basi, float* c, float*b){
-    
+bool PassoSimplesso(Matrice &A, int n, int m, int* Basi, float* c, float*b)
+{ 
+      
     // y = c * A^-1 
-    float* ai_vect = A.inversa();
-    Matrice ai = Matrice(n, n);
-    ai.assegna(ai_vect, n * n, 0);
-    float* y = ai.mColonna(c, n);
+    Matrice Ab(&A, Basi);
+    float* ai_vect = Ab.inversa();
+    Matrice ai = Matrice(m, m);
+    ai.assegna(ai_vect, m * m, 0);
+    float* y = ai.mColonna(c, m);
     //find k = first neg element of y
     int k = -1;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < m; i++)
     {
         std::cout<<y[i]<<"y"<<i<<std::endl;
         if(y[i] < 0){
@@ -386,24 +388,22 @@ int* PassoSimplesso(Matrice A, int n, int* Basi, float* c, float*b){
         }
     }
     if(k == -1){
-        std::cout<<"tutto y positivo";
+        std::cout<<"tutto y positivo\n";
         Basi[0] = -1;
         return Basi;
     }
-    std::cout<<k;
-    return 0;
+    std::cout<<k<<"\n";
+    return false; //problema non risolto
 }
 
-
-
-
-
-
-float linprog(Matrice* A, int n, int m, int* Basi, float*c, float*b){
-    Matrice Ab = Matrice(A, Basi);
-    PassoSimplesso(Ab, m, Basi, c, b);
+float linprog(Matrice* A, int n, int m, int* Basi, float*c, float*b)
+{
+    PassoSimplesso((*A), n, m, Basi, c, b);
     return 0;   
 }
+
+
+
 
 
 
