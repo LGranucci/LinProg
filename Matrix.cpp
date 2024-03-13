@@ -390,7 +390,7 @@ bool PassoSimplesso(Matrice &A, int n, int m, int* Basi, float* c, float*b)
     if(k == -1){
         std::cout<<"tutto y positivo\n";
         Basi[0] = -1;
-        return Basi;
+        return true;
     }
     std::cout<<k<<"\n";
     return false; //problema non risolto
