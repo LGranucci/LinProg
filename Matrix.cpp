@@ -357,7 +357,7 @@ float* Matrice::selezionaRiga(int r){
 float* Matrice::selezionaColonna(int c){
     float* res;
     res = new float [this->n];
-    if(c >= m){
+    if(c >= m || c < 0){
         cout<< "colonna non esistente"<<endl;
         return res;
     }
@@ -368,6 +368,15 @@ float* Matrice::selezionaColonna(int c){
     
     return res;
 }
+float  dot_product(const float arr1[], const float arr2[], int size) {
+    float result = 0.0;
+    for (int i = 0; i < size; i++) {
+        result += arr1[i] * arr2[i];
+    }
+    return result;
+}
+
+
 
 bool PassoSimplesso(Matrice &A, int n, int m, int* Basi, float* c, float*b)
 { 
@@ -379,26 +388,80 @@ bool PassoSimplesso(Matrice &A, int n, int m, int* Basi, float* c, float*b)
     ai.assegna(ai_vect, m * m, 0);
     float* y = ai.mColonna(c, m);
     //find k = first neg element of y
-    int k = -1;
+    int h = -1;
     for (int i = 0; i < m; i++)
     {
         std::cout<<y[i]<<"y"<<i<<std::endl;
         if(y[i] < 0){
-            k = i;
+            h = i;
         }
     }
-    if(k == -1){
+    if(h == -1){
         std::cout<<"tutto y positivo\n";
         Basi[0] = -1;
         return true;
     }
-    std::cout<<k<<"\n";
+    std::cout<<h<<"\n";
+    float* wh = ai.selezionaColonna(h);
+    float* bb = new float[m];
+    int count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if(Basi[i] == i){
+            bb[count] = b[i];
+            count++;
+        }
+    }
+    //UNTESTED
+    float* xsign = Ab.mRiga(bb, m);
+    int min = 0;
+    int k = -1;
+    std::cout<<"A:"<<std::endl;
+    A.stampa();
+    std::cout<<"Ab"<<std::endl;
+    Ab.stampa();
+    for (int i = 0; i < n; i++)
+    {
+
+        float* aRiga = A.selezionaRiga(i);
+        float rapporto = dot_product(aRiga, wh, m);
+        std::cout<<i<<"-esimo rapporto: " << rapporto<<std::endl;
+        bool flag = true;
+        for (int j = 0; j < m; j++){
+            if(Basi[j]  == i){
+                flag = false;
+            }
+        }   
+        
+        if(rapporto > 0 && flag ){
+            float aix = dot_product(aRiga, xsign, m);
+            std::cout<<"aix: "<< aix<<endl;
+            if(min < (b[i] - aix)/rapporto || min == 0){
+                min = (b[i] - aix)/rapporto;
+                k = i;
+            }
+        }
+    }
+    if(k == -1){
+        Basi[0] = -1;
+        std::cout<<"tutto y pos\n";
+        return true;
+    }
+    std::cout<<"k: "<<k<<endl;
+    for(int i = 0; i < m; i++){
+        if(Basi[i] == h){
+            Basi[i] = k;
+        }
+    }
     return false; //problema non risolto
 }
 
 float linprog(Matrice* A, int n, int m, int* Basi, float*c, float*b)
 {
-    PassoSimplesso((*A), n, m, Basi, c, b);
+    bool risolto = false;
+    while (!risolto){
+        risolto = PassoSimplesso((*A), n, m, Basi, c, b);
+    }
     return 0;   
 }
 
